@@ -1,5 +1,13 @@
 # Project 3: Around The U.S.
 
+This is the third project of the Web Development program at TripleTen. It was created using HTML and CSS, based on a design from figma.
+
+Project features: Semantic HTML5 Flexbox and grid Positioning Flat BEM Web Responsive pages CSS animation and transform.
+
+[Link to project]
+
+https://pernellbauza.github.io/se_project_aroundtheus/
+
 ### Overview  
 
 * Intro  
