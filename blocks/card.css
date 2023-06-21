@@ -5,41 +5,39 @@
     border-radius: 10px;
     overflow: hidden;
   }
-  
+
   .card__img {
     width: 282px;
     height: 282px;
-    min-height: 282px;
     object-fit: cover;
   }
-  
-  .card__img-title {
+
+  .card__title {
     margin: 0;
     font-family: "Inter", Arial, Helvetica, sans-serif;
     font-size: 24px;
     line-height: 29px;
     font-weight: 900;
   }
-  
+
   .card__description {
     display: flex;
     background-color: white;
     color: black;
-    padding: 20px 20px;
+    padding: 25px 20px;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .card__like-button {
     background: transparent url("../images/like-inactive.svg") center no-repeat;
     width: 21px;
     height: 18px;
-    padding-right: 20px;
     border: none;
     margin: 0;
     padding: 0;
   }
-  
+
   .card__like-button:hover {
     opacity: 50%;
     transition: 0.4s;
