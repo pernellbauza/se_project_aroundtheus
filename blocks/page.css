@@ -11,24 +11,9 @@
     color: white;
     font-family: "Inter", Arial, Helvetica, sans-serif;
   }
-  
+
 .page__content {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  
-@media screen and (max-width: 596px) {
-    .header {
-      width: 320px;
-      max-width: 100%;
-    }
-    
-    .header__image {
-      width: 126px;
-      height: 24px;
-      margin-left: 27px;
-      padding-bottom: 32px;
-      margin-top: 28px;
-    }
   }
