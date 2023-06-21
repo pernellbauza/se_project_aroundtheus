@@ -2,19 +2,19 @@
     margin-top: 45px;
     max-width: 880px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-    grid-template-columns: repeat(auto-fit, 282px);
   }
-  
+
   .header__logo {
     width: 173px;
     height: 33px;
     padding-bottom: 41px;
   }
-  
+
   @media screen and (max-width: 879px) {
     .header {
       max-width: 581px;
     }
+
     .header__logo {
       margin-left: 27px;
       max-width: 126px;
@@ -23,5 +23,10 @@
   @media screen and (max-width: 580px) {
     .header {
       width: 100%;
+    }
+
+    .header__logo {
+      padding: 0;
+      margin: 0 167px 32px 27px;
     }
   }
