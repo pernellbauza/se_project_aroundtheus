@@ -44,6 +44,7 @@
   margin: 0;
   background-size: 10px;
 }
+
 .profile__edit-button:hover {
   opacity: 60%;
   transition: 0.02s;
