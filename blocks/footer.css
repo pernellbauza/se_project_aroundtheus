@@ -13,11 +13,10 @@
     padding-bottom: 60px;
     margin: 0;
   }
-  
+
   @media screen and (max-width: 900px) {
     .footer {
       max-width: 879px;
-      margin: 0 auto;
     }
     .footer__name {
       margin-left: 80px;
