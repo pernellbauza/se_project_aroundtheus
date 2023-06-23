@@ -18,7 +18,7 @@
   }
 
   @media screen and (max-width: 580px) {
-    .cards__list {
+    .cards {
       margin-top: 36px;
     }
   }
