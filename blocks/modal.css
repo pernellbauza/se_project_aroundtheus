@@ -119,7 +119,8 @@ input {
   .modal__container {
     width: 282px;
     height: 322px;
-    padding: 0px 19px;
+    /*padding: 0px 19px;*/
+    margin: 0 19px;
   }
 
   .modal__close {
