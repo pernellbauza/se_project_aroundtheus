@@ -10,7 +10,6 @@
   align-items: center;
   justify-content: center;
   padding: 0 19px;
-  display: flex;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s linear;
@@ -33,10 +32,6 @@
   margin: auto;
 }
 
-.modal__preview-container {
-  position: relative;
-  background: none;
-}
 .modal__close {
   background-image: url("../images/close.svg");
   border: none;
@@ -110,7 +105,6 @@
   padding-left: 19px;
   visibility: hidden;
   opacity: 0%;
-  position: fixed;
   top: 40px;
   left: 20px;
   bottom: 0;
