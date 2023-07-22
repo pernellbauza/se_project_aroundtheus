@@ -6,63 +6,78 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.5s, opacity 0.5s linear;
+transition: visibility 0.5s, opacity 0.5s linear;
 }
 
-.modal__opened {
-  display: flex;
+.modal_opened {
+  /* display: flex; */
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
-  background-color: white;
-  padding:36px;
+  background-color: #fff;
+  margin: auto;
+  padding: 36px;
   border-radius: 10px;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
   width: 430px;
   height: 330px;
-  position: relative;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   display: grid;
   box-sizing: border-box;
-  margin: auto;
 }
-
+.modal__text {
+  color: #fff;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.modal__image-container {
+  position: relative;
+}
 .modal__close {
-  background-image: url("../images/close.svg");
-  border: none;
+  position: absolute;
   background-color: transparent;
-  outline: none;
+  cursor: pointer;
+  bottom: calc(100% + 5px);
+  left: calc(100% + 5px);
+  border: none;
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
   background-size: contain;
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
-  cursor: pointer;
+  background-image: url(../images/close.svg);
 }
 
 .modal__close:hover {
   opacity: 0.5;
-  transition: opacity .5s ease;
+  transition: opacity 0.5s ease;
   cursor: pointer;
 }
 
-.modal__heading {
-  color: black;
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 900;
+.modal__title {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  color: #000;
   font-size: 24px;
+  font-weight: 900;
   line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
   width: auto;
-  height: 23px;
+  min-height: 23px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
-
 
 .modal__input {
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -77,100 +92,67 @@
   margin-bottom: 29.74px;
 }
 
-.modal__form:last-of-type {
+.modal__form-item:last-of-type {
   margin-bottom: 48px;
 }
 
 .modal__button {
+  display: block;
   background-color: #000;
   color: #fff;
-  /*border-radius: 2px;*/
+  border-radius: 2px;
+  font-weight: 400;
+  line-height: 22px;
   width: 100%;
-  height: 50.15px;
+  height: 50px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
   padding: 0;
-  margin-top: 48px;
+  margin-top: 19px;
   border: none;
 }
 
 .modal__button:hover {
-  opacity: 0.5;
-  transition: opacity 1s ease;
   cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
 }
 
-.modal__preview-container {
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  padding-right: 19px;
-  padding-left: 19px;
-  visibility: hidden;
-  opacity: 0%;
-  top: 40px;
-  left: 20px;
-  bottom: 0;
-  right: 40px;
-  transition: opacity linear 0.3s 0.2s;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-#modal__image-preview {
-  max-width: 75vh;
+.modal__image {
+  max-width: 75vw;
   max-height: 75vh;
-}
-
-#modal__container_image {
-  display: flex;
-  flex: 0 1 25%;
-}
-.modal__image_footer {
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15px;
-  letter-spacing: 0em;
-  text-align: left;
-  position: absolute;
-  margin: 0;
-  color: #fff;
-  bottom: 300px;
-  left: 577px;
-}
-
-#big-picture-modal__close {
-  position: relative;
-  top: -600px;
 }
 
 @media screen and (max-width: 630px) {
   .modal__container {
     width: 282px;
     height: 322px;
-    /*padding: 0px 19px;*/
-    margin: 0 19px;
+    padding: 0px 19px;
   }
-
-  .modal__close-button {
-    width: 26px;
+  .modal__close {
     height: 26px;
-    bottom: calc(100% + 23px);
-    left: calc(100% - 23px);
+    left: 250px;
+    bottom: calc(100% + 35px);
+    width: auto;
+    padding: 0 20;
+    margin-right: 40px;
   }
 
-  .modal__heading {
+  .modal__title {
     width: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
 
   .modal__form {
     width: 238px;
   }
 
-  .modal__button {
+  .modal__form-item {
     width: auto;
+  }
+
+  .modal__button {
     height: 46px;
-    font-size: 14px;
-    align-items: center;
   }
 }
-
