@@ -111,20 +111,22 @@
         type="text"
         name="title"
         placeholder="Title"
+        minlength="1"
+        maxlength="30"
         required
       />
       <span class="modal__error" id="profile-title-input-add-card-error"></span>
       </label>
-
       <label class="modal__label">
         <input
         class="modal__input modal__input_type_url"
-        id="profile-description-input-add-card"
+        id="profile-url-input"
         type="text"
         name="url"
         placeholder="Image URL"
+        required
       />
-      <span class="modal__error" id="profile-description-input-add-card-error"></span>
+      <span class="modal__error" id="profile-url-input-error"></span>
       </label>
 
       <button class="button modal__button modal__button_disabled" type="submit" disabled>Save</button>

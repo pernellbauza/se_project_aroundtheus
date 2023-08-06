@@ -59,14 +59,6 @@ const cardTitleInput = addCardFormElement.querySelector(
 );
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-}
-
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
@@ -158,3 +150,40 @@ addCardFormElement.addEventListener("submit", handleCardAddSubmit);
 closePreviewImageButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
+
+const modalClose = document.querySelectorAll(".modal__close");
+
+// close the popup when esc is pressed
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    modalClose.forEach((modal) => {
+      const modalOpen = modal.classList.contains("modal_opened");
+      if (modalOpen) {
+        closeModal(modal);
+      }
+    });
+  }
+}
+
+// open popup and add esc event listener
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeByEscape);
+}
+
+// close popup and remove esc event listener
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeByEscape);
+}
+
+modalClose.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("modal_opened")) {
+      closeModal(evt.currentTarget);
+    }
+    if (evt.target.classList.contains("modal__close")) {
+      closeModal(evt.currentTarget);
+    }
+  });
+});

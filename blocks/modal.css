@@ -149,10 +149,7 @@ transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .modal__label {
-  /*position: relative;*/
-  display: flex;
-  /*margin: 20px 0px;*/
-  margin-top: 30px;
+  position: relative;
 }
 
 .modal__input {
@@ -189,9 +186,9 @@ transition: visibility 0.5s, opacity 0.5s linear;
   line-height: 14.52px;
   color: #ff0000;
   position: absolute;
-  /*top: calc(40% + 5px);*/
-  top: 150px;
-  left: 70px;
+  /*top: calc(100% + 5px);*/
+  /*top: 150px;
+  left: 70px;*/
 }
 
 .modal__error_visible {
