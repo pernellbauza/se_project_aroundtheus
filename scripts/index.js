@@ -151,29 +151,28 @@ closePreviewImageButton.addEventListener("click", () =>
   closeModal(previewImageModal)
 );
 
-const modalClose = document.querySelectorAll(".modal__close");
+const modalClose = document.querySelectorAll(".modal");
+let currentlyOpenModal = null;
 
 // close the popup when esc is pressed
 function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    modalClose.forEach((modal) => {
-      const modalOpen = modal.classList.contains("modal_opened");
-      if (modalOpen) {
-        closeModal(modal);
+  //console.log("Escape key pressed");
+  if (evt.key === "Escape" && currentlyOpenModal) {
+        closeModal(currentlyOpenModal);
       }
-    });
-  }
-}
+    };
 
 // open popup and add esc event listener
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  currentlyOpenModal = modal;
   document.addEventListener("keydown", closeByEscape);
 }
 
 // close popup and remove esc event listener
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  currentlyOpenModal = null;
   document.removeEventListener("keydown", closeByEscape);
 }
 
@@ -187,3 +186,4 @@ modalClose.forEach((modal) => {
     }
   });
 });
+

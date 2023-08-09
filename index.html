@@ -63,7 +63,7 @@
           <label class="modal__label">
             <input
             class="modal__input modal__input_type_name"
-            id="profile-title-input"
+            id="title-input"
             minlength="2"
             maxlength="40"
             type="text"
@@ -71,7 +71,7 @@
             placeholder="Name"
             required
           />
-          <span class="modal__error" id="profile-title-input-error"></span>
+          <span class="modal__error" id="title-input-error"></span>
           </label>
 
           <label class="modal__label">
@@ -81,11 +81,11 @@
             maxlength="200"
             type="text"
             name="description"
-            id="profile-description-input"
+            id="description-input"
             placeholder="Description"
             required
           />
-          <span class="modal__error" id="profile-description-input-error"></span>
+          <span class="modal__error" id="description-input-error"></span>
           </label>
 
           <button class="button modal__button" type="submit">Save</button>
@@ -107,26 +107,26 @@
       <label class="modal__label">
         <input
         class="modal__input modal__input_type_title"
-        id="profile-title-input-add-card"
+        id="title-input"
+        minlength="1"
+        maxlength="30"
         type="text"
         name="title"
         placeholder="Title"
-        minlength="1"
-        maxlength="30"
         required
       />
-      <span class="modal__error" id="profile-title-input-add-card-error"></span>
+      <span class="modal__error" id="title-input-error"></span>
       </label>
       <label class="modal__label">
         <input
         class="modal__input modal__input_type_url"
-        id="profile-url-input"
-        type="text"
-        name="url"
+        id="url-link"
+        type="url"
+        name="image link"
         placeholder="Image URL"
         required
       />
-      <span class="modal__error" id="profile-url-input-error"></span>
+      <span class="modal__error" id="url-link-error"></span>
       </label>
 
       <button class="button modal__button modal__button_disabled" type="submit" disabled>Save</button>
