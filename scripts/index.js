@@ -131,15 +131,15 @@ profileEditButton.addEventListener("click", () => {
   openModal(editProfileModal);
 });
 
-profileModalCloseButton.addEventListener("click", () =>
-  closeModal(editProfileModal)
-);
+//profileModalCloseButton.addEventListener("click", () =>
+  //closeModal(editProfileModal)
+//);
 
 // Add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-addCardModalCloseButton.addEventListener("click", () =>
-  closeModal(addCardModal)
-);
+//addCardModalCloseButton.addEventListener("click", () =>
+  //closeModal(addCardModal)
+//);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
@@ -147,11 +147,11 @@ initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
 addCardFormElement.addEventListener("submit", handleCardAddSubmit);
 
-closePreviewImageButton.addEventListener("click", () =>
-  closeModal(previewImageModal)
-);
+//closePreviewImageButton.addEventListener("click", () =>
+  //closeModal(previewImageModal)
+//);
 
-const modalClose = document.querySelectorAll(".modal");
+const modals = document.querySelectorAll(".modal");
 let currentlyOpenModal = null;
 
 // close the popup when esc is pressed
@@ -176,7 +176,7 @@ function closeModal(modal) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-modalClose.forEach((modal) => {
+modals.forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal_opened")) {
       closeModal(evt.currentTarget);

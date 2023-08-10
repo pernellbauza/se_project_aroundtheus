@@ -114,9 +114,6 @@ transition: visibility 0.5s, opacity 0.5s linear;
 .modal__form {
   box-sizing: border-box;
   display: grid;
-  justify-content: center;
-  align-items: center;
-  padding-right: 50px;
   /*padding-bottom: 10px;*/
 }
 
@@ -136,9 +133,9 @@ transition: visibility 0.5s, opacity 0.5s linear;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 18px;
   padding: 0;
-  margin-top: 19px;
+  margin-top: 36.51px;
   border: none;
-  margin-left: 36px;
+  /*margin-left: 36px;*/
 }
 
 .modal__button:hover {
@@ -164,14 +161,15 @@ transition: visibility 0.5s, opacity 0.5s linear;
   max-width: 358px;
   max-height: 27.26px;
   box-sizing: border-box;
-  margin-left: 36px;
-  margin-right: 36px;
+  /*margin-left: 36px;
+  margin-right: 36px;*/
   border-bottom-color: rgba(0, 0, 0, 0.2);
   border-bottom-width: 1px;
   border-top: none;
   border-left: none;
   border-right: none;
   padding-bottom: 13.26px;
+left: 20px;
 }
 
 .modal__input::placeholder {
@@ -193,9 +191,10 @@ transition: visibility 0.5s, opacity 0.5s linear;
   line-height: 14.52px;
   color: #ff0000;
   position: absolute;
-  /*top: calc(100% + 5px);*/
+  display: flex;
+  top: calc(100% + 5px);
   /*top: 150px;*/
-  margin-left: 36px;
+  /*margin-left: 36px;*/
 
 }
 
