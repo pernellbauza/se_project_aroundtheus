@@ -1,3 +1,13 @@
+import Card from "../components/Card.js";
+//
+import FormValidator from "../components/FormValidator.js";
+//
+import {
+  openModal,
+  closeModal,
+  closeByEscape,
+} from "../utils/utils.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -58,6 +68,31 @@ const cardTitleInput = addCardFormElement.querySelector(
   ".modal__input_type_title"
 );
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
+
+const cardSelector = "#card-template";
+
+/*Form Validation*/
+
+const settings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormElement = editProfileModal.querySelector(".modal__form");
+const addFormElement = addCardModal.querySelector(".modal__form");
+
+const editFormValidator = new FormValidator(settings, editFormElement);
+const addFormValidator = new FormValidator(settings, addFormElement);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+//closePreviewButton.addEventListener("click", () =>
+//  closePopup(previewImageModal)
+//);
 
 function renderCard(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -151,39 +186,40 @@ addCardFormElement.addEventListener("submit", handleCardAddSubmit);
   //closeModal(previewImageModal)
 //);
 
-const modals = document.querySelectorAll(".modal");
-let currentlyOpenModal = null;
+//const modals = document.querySelectorAll(".modal");
+//let currentlyOpenModal = null;
 
 // close the popup when esc is pressed
-function closeByEscape(evt) {
-  //console.log("Escape key pressed");
-  if (evt.key === "Escape" && currentlyOpenModal) {
-        closeModal(currentlyOpenModal);
-      }
-    };
+//function closeByEscape(evt) {
+//  //console.log("Escape key pressed");
+//  if (evt.key === "Escape" && currentlyOpenModal) {
+//        closeModal(currentlyOpenModal);
+//      }
+//    };
+//
+//// open popup and add esc event listener
+//function openModal(modal) {
+//  modal.classList.add("modal_opened");
+//  currentlyOpenModal = modal;
+//  document.addEventListener("keydown", closeByEscape);
+//}
+//
+//// close popup and remove esc event listener
+//function closeModal(modal) {
+//  modal.classList.remove("modal_opened");
+//  currentlyOpenModal = null;
+//  document.removeEventListener("keydown", closeByEscape);
+//}
+//
+//modals.forEach((modal) => {
+//  modal.addEventListener("mousedown", (evt) => {
+//    if (evt.target.classList.contains("modal_opened")) {
+//      closeModal(evt.currentTarget);
+//    }
+//    if (evt.target.classList.contains("modal__close")) {
+//      closeModal(evt.currentTarget);
+//    }
+//  });
+//});
 
-// open popup and add esc event listener
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  currentlyOpenModal = modal;
-  document.addEventListener("keydown", closeByEscape);
-}
-
-// close popup and remove esc event listener
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  currentlyOpenModal = null;
-  document.removeEventListener("keydown", closeByEscape);
-}
-
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal_opened")) {
-      closeModal(evt.currentTarget);
-    }
-    if (evt.target.classList.contains("modal__close")) {
-      closeModal(evt.currentTarget);
-    }
-  });
-});
 
