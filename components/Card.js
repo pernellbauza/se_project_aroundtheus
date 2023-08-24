@@ -1,8 +1,8 @@
-//import {
-//  openModal,
-//  closeModal,
-//  closeByEscape,
-//} from "../utils/utils.js";
+import {
+  openModal,
+  closeModal,
+  closeByEscape,
+} from "../utils/utils.js";
 
 const previewImageModal = document.querySelector("#preview-image-modal");
 
