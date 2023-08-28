@@ -136,6 +136,7 @@ transition: visibility 0.5s, opacity 0.5s linear;
   margin-top: 36.51px;
   border: none;
   /*margin-left: 36px;*/
+
 }
 
 .modal__button:hover {
@@ -148,6 +149,7 @@ transition: visibility 0.5s, opacity 0.5s linear;
   border-color: rgba(0, 0, 0, 0.2);
   background-color: #fff;
   color: rgba(0, 0, 0, 0.2);
+  cursor: not-allowed !important;
 }
 
 .modal__label {

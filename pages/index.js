@@ -171,10 +171,13 @@ profileEditButton.addEventListener("click", () => {
 //);
 
 // Add new card button
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+addNewCardButton.addEventListener("click", () => {
 //addCardModalCloseButton.addEventListener("click", () =>
   //closeModal(addCardModal)
 //);
+addFormValidator.disableButton();
+openModal(addCardModal)
+});
 
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
