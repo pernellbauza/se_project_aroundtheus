@@ -95,7 +95,8 @@ addFormValidator.enableValidation();
 //);
 
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
+  const card = new Card(cardData, '#card-template');
+  const cardElement= card.getView();
   wrapper.prepend(cardElement);
 }
 

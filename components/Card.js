@@ -10,7 +10,7 @@ const imgEL = document.querySelector(".modal__image");
 
 const previewText = document.querySelector(".modal__preview-title");
 
-const cardImageEl = document.querySelector(".card__image");
+const cardElement = document.querySelector(".card__image");
 
 class Card {
   constructor({ name, link }, cardSelector) {
@@ -32,9 +32,9 @@ class Card {
         this._handleDeleteCard();
       });
 
-    this._cardElement
-    .querySelector(".card__image")
-    //.addEventListener("click", this._handlePreviewPicture);
+    //this._cardElement
+    //.querySelector(".card__image")
+    ////.addEventListener("click", this._handlePreviewPicture);
 
     this._cardElement
       .querySelector(".card__image")
@@ -57,14 +57,17 @@ class Card {
   _handlePreviewPicture() {
     imgEL.src = this._link;
     imgEL.alt = this._name;
-    previewText.textContent = this._name;
+    if (previewText) {
+      previewText.textContent = this._name;
+    }
+
     openModal(previewImageModal);
   }
 
   getView() {
     this._cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector(".card__list")
+      .content.querySelector(".card")
       .cloneNode(true);
 
     this._cardElement.querySelector(".card__title").innerText = this._name;

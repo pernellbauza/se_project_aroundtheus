@@ -41,7 +41,7 @@ export function closeByEscape(evt) {
 
 // open popup and add esc event listener
 export function openModal(modal) {
-  modal.classList.add("modal_opened");
+  modal.classList.add("openModal");
   currentlyOpenModal = modal;
   document.addEventListener("keydown", closeByEscape);
 }
