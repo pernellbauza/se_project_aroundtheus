@@ -119,42 +119,44 @@ function handleCardAddSubmit(evt) {
 function getCardElement(data) {
   // clone the template element with all its content and store it in a cardElement variable
   // access the card title and image and store them in variables
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-
-  //find the delete button
-  //add the event listener to the delete button
-  //cardElement.remove();
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  // add click listener to the cardImage element
-  //open modal with **previewImageModal - add it into the html
-
-  //function openModal(modal) {
-  //modal.classList.add("modal_opened");
-  //
-
-  cardImage.addEventListener("click", () => {
-    modalImage.src = data.link;
-    modalImage.alt = data.name;
-    modalText.textContent = data.name;
-    openModal(previewImageModal);
-  });
-
-  //  previewCloseButton.addEventListener("click", closeModal);
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardTitle.textContent = data.name;
+  //const cardElement = cardTemplate.cloneNode(true);
+  //const cardImage = cardElement.querySelector(".card__image");
+  //const cardTitle = cardElement.querySelector(".card__title");
+  //const likeButton = cardElement.querySelector(".card__like-button");
+//
+  ////find the delete button
+  ////add the event listener to the delete button
+  ////cardElement.remove();
+  //const deleteButton = cardElement.querySelector(".card__delete-button");
+  //deleteButton.addEventListener("click", () => {
+  //  cardElement.remove();
+  //});
+//
+  //// add click listener to the cardImage element
+  ////open modal with **previewImageModal - add it into the html
+//
+  ////function openModal(modal) {
+  ////modal.classList.add("modal_opened");
+  ////
+//
+  //cardImage.addEventListener("click", () => {
+  //  modalImage.src = data.link;
+  //  modalImage.alt = data.name;
+  //  modalText.textContent = data.name;
+  //  openModal(previewImageModal);
+  //});
+//
+  ////  previewCloseButton.addEventListener("click", closeModal);
+//
+  //likeButton.addEventListener("click", () => {
+  //  likeButton.classList.toggle("card__like-button_active");
+  //});
+//
+  //cardImage.src = data.link;
+  //cardImage.alt = data.name;
+  //cardTitle.textContent = data.name;
+  const card = new Card(data, '#card-template');
+  const cardElement= card.getView();
 
   return cardElement;
 }
