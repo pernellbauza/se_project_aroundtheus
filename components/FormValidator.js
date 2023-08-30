@@ -62,8 +62,9 @@ class FormValidator {
       this._submitButton.classList.remove(this._inactiveButtonClass);
       this._submitButton.disabled = false;
     } else {
-      this._submitButton.classList.add(this._inactiveButtonClass);
-      this._submitButton.disabled = true;
+      this.disableButton();
+      //this._submitButton.classList.add(this._inactiveButtonClass);
+      //this._submitButton.disabled = true;
     }
   }
 
