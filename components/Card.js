@@ -4,7 +4,7 @@ import {
   closeByEscape,
 } from "../utils/utils.js";
 
-const previewImageModal = document.querySelector("#preview-image-modal");
+const previewImageModal = document.querySelector("#previewImageModal");
 
 const imgEL = document.querySelector(".modal__image");
 
