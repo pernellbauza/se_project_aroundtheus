@@ -155,8 +155,6 @@ function getCardElement(data) {
   //cardImage.src = data.link;
   //cardImage.alt = data.name;
   //cardTitle.textContent = data.name;
-  const card = new Card(data, '#card-template');
-  const cardElement= card.getView();
 
   return cardElement;
 }
