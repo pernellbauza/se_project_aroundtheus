@@ -8,7 +8,7 @@ const previewImageModal = document.querySelector("#previewImageModal");
 
 const imgEL = document.querySelector(".modal__image");
 
-const previewText = document.querySelector(".modal__preview-title");
+const previewText = document.querySelector(".modal__text");
 
 const cardElement = document.querySelector(".card__image");
 
