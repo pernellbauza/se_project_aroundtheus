@@ -54,8 +54,8 @@ const modalText = document.querySelector("#modalText");
 const profileEditButton = document.querySelector(".profile__edit-button");
 //const profileModalCloseButton = editProfileModal.querySelector(".modal__close");
 //const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
-const editFormElement = editProfileModal.querySelector(".modal__form");
-const addFormElement = addCardModal.querySelector(".modal__form");
+//const editFormElement = editProfileModal.querySelector(".modal__form");
+//const addFormElement = addCardModal.querySelector(".modal__form");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const addNewCardButton = document.querySelector(".profile__add-button");
@@ -83,8 +83,8 @@ const settings = {
   errorClass: "modal__error_visible",
 };
 
-const editFormValidator = new FormValidator(settings, editFormElement);
-const addFormValidator = new FormValidator(settings, addFormElement);
+const editFormValidator = new FormValidator(settings, profileFormElement);
+const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
