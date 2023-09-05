@@ -2,6 +2,8 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js"
 import FormValidator from "../components/FormValidator.js";
 import Popup from "../components/Popup.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 import {
   openModal,
@@ -100,6 +102,19 @@ addFormValidator.enableValidation();
 //  wrapper.prepend(cardElement);
 //}
 
+// New Popupwithform const
+const addCardPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
+addCardPopup.setEventListeners();
+
+const editProfilePopup = new PopupWithForm(
+  "#edit-modal",
+  handleProfileEditSubmit
+);
+editProfilePopup.setEventListeners();
+
 // Create and render card
 const renderCard = (cardData) => {
   const newCard = new Card(cardData, "#card-template", handleCardClick);
@@ -117,7 +132,7 @@ const cardSection = new Section(
 cardSection.renderItems();
 
 //Preview Popup Const
-const imagePreviewPopup = new Popup ("#previewImageModal");
+const imagePreviewPopup = new PopupWithImage ("#previewImageModal");
 imagePreviewPopup.setEventListeners();
 
 function handleCardClick(name, link) {
