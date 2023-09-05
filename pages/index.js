@@ -4,6 +4,7 @@ import FormValidator from "../components/FormValidator.js";
 import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 import {
   openModal,
@@ -75,6 +76,7 @@ const cardTitleInput = addCardFormElement.querySelector(
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
 const cardSelector = "#card-template";
+const userInfo = new UserInfo(profileTitle, profileDescription);
 
 /*Form Validation*/
 
