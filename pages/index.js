@@ -1,7 +1,8 @@
 import Card from "../components/Card.js";
-//
+import Section from "../components/Section.js"
 import FormValidator from "../components/FormValidator.js";
-//
+import Popup from "../components/Popup.js";
+
 import {
   openModal,
   closeModal,
@@ -93,10 +94,34 @@ addFormValidator.enableValidation();
 //  closePopup(previewImageModal)
 //);
 
-function renderCard(cardData, wrapper) {
-  const card = new Card(cardData, '#card-template');
-  const cardElement= card.getView();
-  wrapper.prepend(cardElement);
+//function renderCard(cardData, wrapper) {
+//  const card = new Card(cardData, '#card-template');
+//  const cardElement= card.getView();
+//  wrapper.prepend(cardElement);
+//}
+
+// Create and render card
+const renderCard = (cardData) => {
+  const newCard = new Card(cardData, "#card-template", handleCardClick);
+  cardSection.addItem(newCard.getView());
+};
+
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: renderCard,
+  },
+  cardListSelector
+);
+
+cardSection.renderItems();
+
+//Preview Popup Const
+const imagePreviewPopup = new PopupWithImage("#previewImageModal");
+imagePreviewPopup.setEventListeners();
+
+function handleCardClick(name, link) {
+  imagePreviewPopup.open(name, link);
 }
 
 function handleProfileFormSubmit(evt) {
