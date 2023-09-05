@@ -117,7 +117,7 @@ const cardSection = new Section(
 cardSection.renderItems();
 
 //Preview Popup Const
-const imagePreviewPopup = new PopupWithImage("#previewImageModal");
+const imagePreviewPopup = new Popup ("#previewImageModal");
 imagePreviewPopup.setEventListeners();
 
 function handleCardClick(name, link) {
