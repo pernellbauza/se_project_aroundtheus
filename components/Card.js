@@ -13,10 +13,11 @@ const previewText = document.querySelector(".modal__text");
 const cardElement = document.querySelector(".card__image");
 
 class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
