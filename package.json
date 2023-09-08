@@ -2,7 +2,7 @@
   "name": "practicum",
   "version": "0.0.1",
   "description": "Educational platform",
-  "main": "index.js",
+  "main": "./src/pages/index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development"

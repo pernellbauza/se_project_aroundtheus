@@ -5,6 +5,7 @@ import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import "../pages/index.css";
 
 import {
   openModal,
@@ -75,7 +76,8 @@ const cardTitleInput = addCardFormElement.querySelector(
 );
 const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
 
-const cardSelector = "#card-template";
+const cardListSelector = "#card-template";
+
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
 /*Form Validation*/
@@ -118,7 +120,7 @@ const editProfilePopup = new PopupWithForm(
 editProfilePopup.setEventListeners();
 
 // Create and render card
-const renderCard = (cardData) => {
+function renderCard (cardData) {
   const newCard = new Card(cardData, "#card-template", handleCardClick);
   cardSection.addItem(newCard.getView());
 };
@@ -141,6 +143,11 @@ function handleCardClick(name, link) {
   imagePreviewPopup.open(name, link);
 }
 
+function handleProfileEditSubmit(data) {
+  userInfo.setUserInfo(data.name, data.description);
+  editProfilePopup.close();
+}
+
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
@@ -156,6 +163,23 @@ function handleCardAddSubmit(evt) {
 
   closeModal(addCardModal);
   addCardFormElement.reset();
+}
+
+function handleAddCardFormSubmit() {
+  const name = cardTitleInput.value;
+  const link = cardLinkInput.value;
+  renderCard({ name, link }, cardListEL);
+}
+
+function fillProfileForm() {
+  const userInfoData = userInfo.getUserInfo();
+  profileTitleInput.value = userInfoData.name;
+  profileDescriptionInput.value = userInfoData.description;
+}
+
+function openProfileForm() {
+  fillProfileForm();
+  editProfilePopup.open();
 }
 
 function getCardElement(data) {
