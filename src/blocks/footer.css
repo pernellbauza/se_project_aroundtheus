@@ -1,5 +1,4 @@
 .footer {
-  display: flex;
   max-width: 880px;
   margin: auto;
 }
@@ -11,8 +10,9 @@
   font-size: 18px;
   line-height: 22px;
   color: #545454;
-  margin-top: 67px;
-  margin-bottom: 60px;
+  padding-top: 67px;
+  padding-bottom: 60px;
+  margin: 0;
 }
 
 @media screen and (max-width: 480px) {
