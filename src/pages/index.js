@@ -4,7 +4,9 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
-import { handleClosePopupWithOutsideClick } from "../utils/utils.js";
+import { openPopup,
+  closePopup,
+  handleClosePopupWithOutsideClick } from "../utils/utils.js";
 
 import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -14,6 +16,7 @@ import { initialCards,
   cardListSelector,
   settings, } from "../utils/constants.js";
 
+const cardsWrap = document.querySelector(".cards__list");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -109,15 +112,15 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleAddCardFormSubmit() {
-  evt.preventDefault();
+  //evt.preventDefault();
   const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  const formData = _getInputValues();
+  const link = cardLinkInput.value;
+  //const formData = _getInputValues();
   renderCard({ name, link }, cardsWrap);
 
-  closeModal(addCardModal);
+  closePopup(addCardModal);
   addCardFormElement.reset();
-  submitForm(formData);
+ //submitForm(formData);
 }
 
 function fillProfileForm() {
