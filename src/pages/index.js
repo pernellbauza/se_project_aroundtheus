@@ -120,7 +120,7 @@ function handleAddCardFormSubmit() {
 
   closePopup(addCardModal);
   addCardFormElement.reset();
- //submitForm(formData);
+  //submitForm(formData);
 }
 
 function fillProfileForm() {
