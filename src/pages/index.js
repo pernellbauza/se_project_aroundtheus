@@ -91,10 +91,10 @@ const settings = {
 };
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
-const addFormElement = addCardModal.querySelector(".modal__form");
+//const addFormElement = addCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
-const addFormValidator = new FormValidator(settings, addFormElement);
+const addFormValidator = new FormValidator(settings, addCardFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
@@ -147,9 +147,13 @@ function handleProfileEditSubmit(data) {
 }
 
 function handleAddCardFormSubmit() {
+  evt.preventDefault();
   const name = cardTitleInput.value;
-  const link = cardLinkInput.value;
-  renderCard({ name, link }, cardListEL);
+  const link = cardUrlInput.value;
+  renderCard({ name, link }, cardsWrap);
+
+  closeModal(addCardModal);
+  addCardFormElement.reset();
 }
 
 function fillProfileForm() {
@@ -166,10 +170,9 @@ function openProfileForm() {
 /*Event Listeners*/
 
 profileEditButton.addEventListener("click", openProfileForm);
-profileCloseButton.addEventListener("click", () => editProfilePopup.close());
 addNewCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   addCardPopup.open();
 });
-cardCloseButton.addEventListener("click", () => addCardPopup.close());
+
 
