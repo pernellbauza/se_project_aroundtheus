@@ -9,14 +9,10 @@ import { handleClosePopupWithOutsideClick } from "../utils/utils.js";
 import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { initialCards } from "../utils/constants.js";
-
-export const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-
-export const cardListSelector = ".card";
+import { initialCards,
+  cardData,
+  cardListSelector,
+  settings, } from "../utils/constants.js";
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -55,14 +51,6 @@ const cardLinkInput = addCardFormElement.querySelector(
 const cardSelector = "#card-template";
 
 /*Form Validation*/
-
-const settings = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
 //const addFormElement = addCardModal.querySelector(".modal__form");
