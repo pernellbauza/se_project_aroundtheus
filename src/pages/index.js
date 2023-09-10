@@ -112,10 +112,12 @@ function handleAddCardFormSubmit() {
   evt.preventDefault();
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
+  const formData = _getInputValues();
   renderCard({ name, link }, cardsWrap);
 
   closeModal(addCardModal);
   addCardFormElement.reset();
+  submitForm(formData);
 }
 
 function fillProfileForm() {
