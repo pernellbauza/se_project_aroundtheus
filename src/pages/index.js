@@ -81,7 +81,7 @@ editProfilePopup.setEventListeners();
 // Create and render card
 
 const renderCard = (cardData) => {
-  const newCard = new Card(cardData, "#card-template", handleCardClick);
+  const newCard = new Card(cardData, cardSelector, handleCardClick);
   cardSection.addItem(newCard.getView());
 };
 
@@ -111,16 +111,18 @@ function handleProfileEditSubmit(data) {
   editProfilePopup.close();
 }
 
-function handleAddCardFormSubmit() {
+function handleAddCardFormSubmit(data) {
   //evt.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardLinkInput.value;
+  //const name = cardTitleInput.value;
+  //const link = cardLinkInput.value;
   //const formData = _getInputValues();
-  renderCard({ name, link }, cardsWrap);
+  //renderCard({ name, link }, cardsWrap);
+  const newCard = renderCard({ name: data.title, link: data.url });
+  //cardSection.addItem(newCard);
 
   closePopup(addCardModal);
   addCardFormElement.reset();
-  //submitForm(formData);
+  //submitForm(newCard);
 }
 
 function fillProfileForm() {
