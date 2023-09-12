@@ -117,7 +117,7 @@ function handleAddCardFormSubmit(data) {
   //const link = cardLinkInput.value;
   //const formData = _getInputValues();
   //renderCard({ name, link }, cardsWrap);
-  const newCard = renderCard({ name: data.title, link: data.url });
+  renderCard({ name: data.title, link: data.link });
   //cardSection.addItem(newCard);
 
   closePopup(addCardModal);
