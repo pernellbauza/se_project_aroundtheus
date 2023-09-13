@@ -4,9 +4,9 @@ import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
-import { openPopup,
-  closePopup,
-  handleClosePopupWithOutsideClick } from "../utils/utils.js";
+//import { openPopup,
+//  closePopup,
+//  handleClosePopupWithOutsideClick } from "../utils/utils.js";
 
 import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -120,8 +120,9 @@ function handleAddCardFormSubmit(data) {
   renderCard({ name: data.title, link: data.link });
   //cardSection.addItem(newCard);
 
-  closePopup(addCardModal);
-  addCardFormElement.reset();
+  addCardPopup.close();
+  //closePopup(addCardModal);
+  //addCardFormElement.reset();
   //submitForm(newCard);
 }
 
