@@ -16,6 +16,11 @@ import { initialCards,
   cardListSelector,
   settings, } from "../utils/constants.js";
 
+const api = new API({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  authToken: "5793aa33-df41-4207-932f-c4634251891f"
+});
+
 const cardsWrap = document.querySelector(".cards__list");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
@@ -39,6 +44,56 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 // );
 
 /* Form Data const*/
+//const userInfo = new UserInfo(profileTitle, profileDescription);
+//
+//const profileDescriptionInput = document.querySelector(
+//  "#profile-description-input"
+//);
+//const profileTitleInput = document.querySelector("#profile-title-input");
+//const cardTitleInput = addCardFormElement.querySelector(
+//  ".modal__input_type_title"
+//);
+//const cardLinkInput = addCardFormElement.querySelector(
+//  ".modal__input_type_link"
+//);
+//const cardSelector = "#card-template";
+
+//Delete Card const
+
+const deleteCardPopup = new PopupWithConfirmation(
+  "#card__delete-modal",
+  handleDeleteCardClick
+);
+
+function handleDeleteCardClick(cardId) {
+  deleteCardPopup.setSubmitAction(() => {
+    deleteCardPopup.setLoading(true);
+    api
+      .removeCard(cardId)
+      .then(() => {
+        newCard.remove();
+
+        deleteCardPopup.close();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        deleteCardPopup.setLoading(false);
+      });
+  });
+  deleteCardPopup.open();
+}
+
+// User Info
+
+api.getUserInfo().then((UserData) => {
+  userInfo.setUserInfo({
+    userName: UserData.name,
+    userDescription: UserData.description,
+  });
+});
+
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
 const profileDescriptionInput = document.querySelector(
