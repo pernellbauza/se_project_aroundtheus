@@ -15,10 +15,13 @@ import { initialCards,
   cardData,
   cardListSelector,
   settings, } from "../utils/constants.js";
+import Api from "../components/Api";
+import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
-const api = new API({
+const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "5793aa33-df41-4207-932f-c4634251891f"
+  authToken: "a6b0d3f9-c93a-40a7-bb63-88a6933de23d",
+  "Content-Type": "application/json",
 });
 
 const cardsWrap = document.querySelector(".cards__list");
@@ -199,5 +202,3 @@ addNewCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   addCardPopup.open();
 });
-
-

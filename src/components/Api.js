@@ -19,9 +19,11 @@ export default class Api {
   }
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
       headers: {
         authorization: this._authToken,
-      },
+      }
+
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
