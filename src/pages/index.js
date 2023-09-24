@@ -64,7 +64,7 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 //Delete Card const
 
 const deleteCardPopup = new PopupWithConfirmation(
-  "#card__delete-modal",
+  ".modal__delete-button",
   handleDeleteCardClick
 );
 
