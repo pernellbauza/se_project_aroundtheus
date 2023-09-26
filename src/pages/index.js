@@ -24,7 +24,6 @@ const api = new Api({
   "Content-Type": "application/json",
 });
 
-const cardsWrap = document.querySelector(".cards__list");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const addCardModal = document.querySelector("#add-card-modal");
@@ -45,26 +44,15 @@ const addNewCardButton = document.querySelector(".profile__add-button");
 // const closePreviewButton = document.querySelector(
 //   "#preview-close-image-button"
 // );
+const deletePopupCloseButton = document.querySelector("#delete-modal-button");
+const deleteButton = document.querySelector(".modal__delete-button");
 
 /* Form Data const*/
-//const userInfo = new UserInfo(profileTitle, profileDescription);
-//
-//const profileDescriptionInput = document.querySelector(
-//  "#profile-description-input"
-//);
-//const profileTitleInput = document.querySelector("#profile-title-input");
-//const cardTitleInput = addCardFormElement.querySelector(
-//  ".modal__input_type_title"
-//);
-//const cardLinkInput = addCardFormElement.querySelector(
-//  ".modal__input_type_link"
-//);
-//const cardSelector = "#card-template";
 
 //Delete Card const
 
 const deleteCardPopup = new PopupWithConfirmation(
-  ".modal__delete-button",
+  "#card__delete-modal",
   handleDeleteCardClick
 );
 
@@ -114,10 +102,10 @@ const cardSelector = "#card-template";
 /*Form Validation*/
 
 const editFormElement = profileEditModal.querySelector(".modal__form");
-//const addFormElement = addCardModal.querySelector(".modal__form");
+const addFormElement = addCardModal.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(settings, editFormElement);
-const addFormValidator = new FormValidator(settings, addCardFormElement);
+const addFormValidator = new FormValidator(settings, addFormElement);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
@@ -138,20 +126,28 @@ editProfilePopup.setEventListeners();
 
 // Create and render card
 
+let cardSection;
+
 const renderCard = (cardData) => {
-  const newCard = new Card(cardData, cardSelector, handleCardClick);
+  const newCard = new Card(
+    cardData,
+    "#card-template",
+    handleCardClick,
+    handleDeleteCardClick
+  );
   cardSection.addItem(newCard.getView());
 };
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: renderCard,
-  },
-  cardListSelector
-);
-
-cardSection.renderItems();
+api.getInitialCards().then((cardData) => {
+  cardSection = new Section(
+    {
+      items: cardData,
+      renderer: renderCard,
+    },
+    cardListSelector
+  );
+  cardSection.renderItems();
+});
 
 //Preview Popup Const
 
@@ -169,20 +165,29 @@ function handleProfileEditSubmit(data) {
   editProfilePopup.close();
 }
 
-function handleAddCardFormSubmit(data) {
-  //evt.preventDefault();
-  //const name = cardTitleInput.value;
-  //const link = cardLinkInput.value;
-  //const formData = _getInputValues();
-  //renderCard({ name, link }, cardsWrap);
-  renderCard({ name: data.title, link: data.link });
-  //cardSection.addItem(newCard);
+function handleAddCardFormSubmit() {
+  const name = cardTitleInput.value;
+  const link = cardLinkInput.value;
+  const cardData = { name, link };
 
-  addCardPopup.close();
-  //closePopup(addCardModal);
-  //addCardFormElement.reset();
-  //submitForm(newCard);
+  api
+    .addCard(cardData)
+    .then((res) => {
+      renderCard(res, cardListEL);
+
+      addCardPopup.close();
+    })
+
+    .catch((err) => {
+      console.error(err);
+    });
 }
+
+// function handleAddCardFormSubmit() {
+//   const name = cardTitleInput.value;
+//   const link = cardLinkInput.value;
+//   renderCard({ name, link }, cardListEL);
+// }
 
 function fillProfileForm() {
   const userInfoData = userInfo.getUserInfo();
@@ -198,7 +203,13 @@ function openProfileForm() {
 /*Event Listeners*/
 
 profileEditButton.addEventListener("click", openProfileForm);
+profileCloseButton.addEventListener("click", () => editProfilePopup.close());
 addNewCardButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
   addCardPopup.open();
 });
+cardCloseButton.addEventListener("click", () => addCardPopup.close());
+deletePopupCloseButton.addEventListener("click", () => {
+  deleteCardPopup.close();
+});
+deleteButton.addEventListener("click", () => handleDeleteCardClick());
