@@ -1,13 +1,22 @@
+import Card from "./Card.js";
+
 export default class Api {
-  constructor({ baseUrl, authToken }) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
-    this._authToken = authToken;
+    this._headers = headers;
   }
+
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: {
-        authorization: this._authToken,
-      },
+      headers: this._headers,
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
@@ -17,13 +26,11 @@ export default class Api {
         throw err;
       });
   }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "GET",
-      headers: {
-        authorization: this._authToken,
-      }
-
+      //method: "GET",
+      headers: this._headers,
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
@@ -36,10 +43,7 @@ export default class Api {
   addCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-},
+      headers: this._headers,
       body: JSON.stringify({
         name,
         link,
@@ -54,13 +58,11 @@ export default class Api {
     });
   }
 
-  removeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+  removeCard(id) {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._authToken,
-        "Content-Type": "application/json",
-},
+      headers: this._headers,
+      body: JSON.stringify(this._id),
     })
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
@@ -70,6 +72,12 @@ export default class Api {
       });
   }
 }
+
+//editProfile()
+//  return fetch(`${this._baseUrl}/users/me`, {
+//    method: "PATCH",
+//    headers: this._headers,
+//})
 
 //export default class Api {
 //  constructor({ baseUrl, headers }) {

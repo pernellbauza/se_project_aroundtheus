@@ -20,8 +20,10 @@ import PopupWithConfirmation from "../components/PopupWithConfirmation";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "a6b0d3f9-c93a-40a7-bb63-88a6933de23d",
+  headers: {
+    authorization: "a6b0d3f9-c93a-40a7-bb63-88a6933de23d",
   "Content-Type": "application/json",
+  }
 });
 
 const profileEditButton = document.querySelector("#profile-edit-button");
@@ -56,34 +58,47 @@ const deleteCardPopup = new PopupWithConfirmation(
   handleDeleteCardClick
 );
 
-function handleDeleteCardClick(cardId) {
-  deleteCardPopup.setSubmitAction(() => {
-    deleteCardPopup.setLoading(true);
-    api
-      .removeCard(cardId)
-      .then(() => {
-        newCard.remove();
+function handleDeleteCardClick(card) {
+  //deleteCardPopup.setSubmitAction(() => {
+  //  deleteCardPopup.setLoading(true);
+  //  api
+  //    .removeCard(card)
+  //    .then(() => {
+  //      newCard.remove();
+//
+  //      deleteCardPopup.close();
+  //    })
+  //    .catch((err) => {
+  //      console.error(err);
+  //    })
+  //    .finally(() => {
+  //      deleteCardPopup.setLoading(false);
+  //    });
+  //});
+  //deleteCardPopup.open();
 
-        deleteCardPopup.close();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        deleteCardPopup.setLoading(false);
-      });
-  });
   deleteCardPopup.open();
+  deleteCardPopup.setSubmitAction(() => {
+    api.deleteCard(this.id);
+  });
+  deleteCardPopup.setEventListeners();
 }
 
 // User Info
 
-api.getUserInfo().then((UserData) => {
-  userInfo.setUserInfo({
-    userName: UserData.name,
-    userDescription: UserData.description,
-  });
-});
+//api.getUserInfo();
+//let section;
+//api.getInitialCards().then((cards) => {
+//  section = new Section({
+//    items: cards,
+//    renderer: (cardData) => {
+//      const cards = renderCard(cardData);
+//      section.addItem(cards);
+//    },
+//  });
+//  section.renderItems();
+//
+//});
 
 const userInfo = new UserInfo(profileTitle, profileDescription);
 
@@ -129,13 +144,13 @@ editProfilePopup.setEventListeners();
 let cardSection;
 
 const renderCard = (cardData) => {
-  const newCard = new Card(
+  const card = new Card(
     cardData,
     "#card-template",
     handleCardClick,
-    handleDeleteCardClick
+    handleDeleteCardClick,
   );
-  cardSection.addItem(newCard.getView());
+  cardSection.addItem(card.getView());
 };
 
 api.getInitialCards().then((cardData) => {
@@ -165,11 +180,7 @@ function handleProfileEditSubmit(data) {
   editProfilePopup.close();
 }
 
-function handleAddCardFormSubmit() {
-  const name = cardTitleInput.value;
-  const link = cardLinkInput.value;
-  const cardData = { name, link };
-
+function handleAddCardFormSubmit(cardData) {
   api
     .addCard(cardData)
     .then((res) => {
