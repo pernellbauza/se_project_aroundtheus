@@ -44,6 +44,13 @@ export default class Api {
         name,
         link,
       }),
+
+    })
+    .then((res) =>
+      res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    )
+    .catch((err) => {
+      console.error("Error:", err);
     });
   }
 
