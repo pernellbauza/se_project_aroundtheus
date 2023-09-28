@@ -79,7 +79,11 @@ function handleDeleteCardClick(card) {
 
   deleteCardPopup.open();
   deleteCardPopup.setSubmitAction(() => {
-    api.deleteCard(this.id);
+    const id = this.getId();
+    api.deleteCard(id).then(() => {
+      deleteCardPopup.close();
+      this.handleDeleteCard();
+    });
   });
   deleteCardPopup.setEventListeners();
 }
@@ -144,12 +148,12 @@ editProfilePopup.setEventListeners();
 let cardSection;
 
 const renderCard = (cardData) => {
-  const card = new Card(
+  const card = new Card({
     cardData,
-    "#card-template",
+    cardSelector: "#card-template",
     handleCardClick,
     handleDeleteCardClick,
-  );
+  });
   cardSection.addItem(card.getView());
 };
 

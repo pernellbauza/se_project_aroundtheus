@@ -48,6 +48,31 @@
   padding: 0;
 }
 
+.modal__save-button {
+  width: 100%;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  align-content: center;
+  border: none;
+  margin-top: 18px;
+  padding: 0;
+}
+
+.modal__save-button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal__save-button_disabled:hover {
+  opacity: 0.2;
+  cursor: default;
+}
+
 .modal__container_delete-card {
   width: 430px;
   height: 181px;
