@@ -1,31 +1,30 @@
 import Popup from "./Popup.js";
 
-class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
-    super({ popupSelector });
-    this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit = handleFormSubmit;
-    this._deleteButton = this._popupElement.querySelector(".modal__delete-button");
-  }
+export default class PopupWithConfirmation extends Popup {
+    constructor(popupSelector) {
+        super(popupSelector);
+        this._popForm = this._popupElement.querySelector(".modal__form");
+        this._deletePopup = document.querySelector("#modal-confirm-delete");
+        this._deletePopupCloseBtn = this._popupElement.querySelector("#modal-button-close-confirm-delete");
+        this._deletePopupSubmit = this._popupElement.querySelector("#modal-button-confirm-delete");
+        this._deletePopUpSubmitText = this._deletePopupSubmit.textContent
+    }
+        setEventListeners(){
+            super.setEventListeners();
+            this._popForm.addEventListener("submit", (evt) => {
+                evt.preventDefault();
+                this._handleFormSubmit(evt);
+            })
+        }
+        setDeleting = (isDeleting, deletingText = "Deleting...") => {
+            if (isDeleting) {
+                this._deletePopupSubmit.textContent = deletingText;
+              } else {
+                this._deletePopupSubmit.textContent = this._deletePopUpSubmitText;
+              }
+            };
 
-  setSubmitAction(action) {
-    this._handleFormSubmit = action;
-  }
-
-  //setLoading(isLoading) {
-  //  this._deleteButton.textContent = isLoading ? "Loading..." : "Yes";
-  //}
-
-  close() {
-    this._popupForm.addEventListener("submit", this._handleFormSubmit);
-    super.close();
-    // this._popupForm.removeEventListener("submit", this._handleFormSubmit);
-  }
-
-  setEventListeners() {
-    super.setEventListeners();
-    this._popupForm.addEventListener("submit", this._handleFormSubmit);
-  }
-}
-
-export default PopupWithConfirmation;
+            setSubmitCall(callback){
+                this._handleFormSubmit = callback;
+            }
+    }

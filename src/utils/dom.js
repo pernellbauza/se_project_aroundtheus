@@ -1,4 +1,4 @@
-import {settings} from "../constants/constants.js"
+import {settings} from "../utils/constants.js"
 
 export const formList = [...document.querySelectorAll(settings.formSelector)]
 export const modals = [...document.querySelectorAll(".modal")]; //get all modal containers
