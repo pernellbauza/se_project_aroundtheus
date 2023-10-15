@@ -1,37 +1,26 @@
 .header {
-  padding-top: 45px;
   max-width: 880px;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  padding-top: 45px;
 }
+
 .header__logo {
+
   width: 173px;
   height: 33px;
   margin-bottom: 41px;
 }
 
-@media screen and (max-width: 770px) {
-  .header {
-    width: 100%;
-    padding: 0;
-  }
-
+@media screen and (max-width: 630px) {
   .header__logo {
+    margin-top: 28px;
     width: 126px;
     height: 24px;
-    padding-top: 28px;
-    padding-left: 27px;
-    padding-bottom: 32px;
-    margin: 0;
+    margin-left: 27px;
+    margin-bottom: 32px;
   }
-}
 
-@media screen and (max-width: 480px) {
   .header {
-    max-width: 100%;
-  }
-
-  .header__logo {
-    width: 126px;
-    height: 24px;
+    margin-bottom: 38.25px;
   }
 }

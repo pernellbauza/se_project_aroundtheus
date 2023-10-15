@@ -30,12 +30,19 @@ export const cardData = {
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 };
 
-export const cardListSelector = ".card";
-
 export const settings = {
+  //validation settings for the form validator
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
+  submitButtonSelector: ".modal__button_submit",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
+  formSelector: ".modal__form",
 };
+
+export const userInfoSettings = {
+userNameSelector: ".profile__name",
+jobNameSelector: ".profile__subtitle",
+}
+
+export const cardSelector = '.card';
